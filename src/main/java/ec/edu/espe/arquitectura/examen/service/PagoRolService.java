@@ -28,10 +28,12 @@ public class PagoRolService  {
     public PagoRol pagoCreate(PagoRolRQ pagoRQ) {
         PagoRol pago = this.transformPagoRQ(pagoRQ);
         PagoRol pagoTmp = this.pagoRolRepository.findFirstByMes(pago.getMes());
+        List<EmpleadosPago> empleadosPagos = pago.getPagos();
         if (pagoTmp == null) {
             pago.setFechaProceso(new Date());
-            //aqui va un metodo for
-            //pago.setValorTotal(new BigDecimal(0));
+            for(EmpleadosPago empleadosPago : empleadosPagos){
+                pago.setValorTotal(empleadosPago.getValor());
+            }
             pago.setValorReal(new BigDecimal(0));
             return this.pagoRolRepository.save(pago);
         } else {
