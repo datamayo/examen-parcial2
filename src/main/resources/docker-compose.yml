@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mongo-examen:
+    image: mongo:latest
+    container_name: mongo-examen
+    ports:
+      - 27017:27017
+  springapp:
+    image: springapp:0.1
+    depends_on:
+      - mongo-examen
+    container_name: springapp
+    ports:
+      - 9010:9010
+    build:  .
+    

@@ -1,6 +1,5 @@
 package ec.edu.espe.arquitectura.examen.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -21,8 +20,8 @@ public class PagoRol {
     private Date fechaProceso;
     private String rucEmpresa;
     private Boolean cuentaPrincipal;
-    private BigDecimal valorTotal;
-    private BigDecimal valorReal;
+    private Double valorTotal;
+    private Double valorReal;
 
     @Version 
     private Long version;

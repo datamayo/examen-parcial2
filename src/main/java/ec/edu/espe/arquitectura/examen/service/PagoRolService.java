@@ -1,19 +1,15 @@
 package ec.edu.espe.arquitectura.examen.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import ec.edu.espe.arquitectura.examen.dto.EmpleadoRQ;
+
 import ec.edu.espe.arquitectura.examen.dto.EmpleadosPagoRQ;
-import ec.edu.espe.arquitectura.examen.dto.EmpresaRQ;
 import ec.edu.espe.arquitectura.examen.dto.PagoRolRQ;
-import ec.edu.espe.arquitectura.examen.model.Empleado;
 import ec.edu.espe.arquitectura.examen.model.EmpleadosPago;
-import ec.edu.espe.arquitectura.examen.model.Empresa;
 import ec.edu.espe.arquitectura.examen.model.PagoRol;
 import ec.edu.espe.arquitectura.examen.repository.PagoRolRepository;
 
@@ -34,7 +30,7 @@ public class PagoRolService  {
             for(EmpleadosPago empleadosPago : empleadosPagos){
                 pago.setValorTotal(empleadosPago.getValor());
             }
-            pago.setValorReal(new BigDecimal(0));
+            pago.setValorReal(0.0);
             return this.pagoRolRepository.save(pago);
         } else {
             throw new RuntimeException("Ya existe");
